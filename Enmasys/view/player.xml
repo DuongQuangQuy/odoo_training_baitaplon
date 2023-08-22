@@ -1,0 +1,53 @@
+<odoo>
+    <record id = "player_view_tree" model = "ir.ui.view">
+        <field name = "name">player.tree</field>
+        <field name="model">player</field>
+        <field name="arch" type = "xml">
+                <tree string = "players">
+                    <field name = 'name' />
+                    <field name="country"/>
+                    <field name="gender" />
+                    <field name="position" />
+                    <field name="height" />
+                    <field name = "weight" />
+                </tree>
+        </field>
+    </record>
+    <record id="play_view_form" model="ir.ui.view">
+        <field name = "name">player.form</field>
+        <field name="model">player</field>
+        <field name="arch" type="xml">
+            <form string = "Player">
+                <sheet>
+                    <field name="image" widge = "image" class = 'oe_avatar'/>
+                    <div class = 'oe_litte'>
+                        <label for = "name"></label>
+                        <h1>
+                            <field name="name"></field>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name = "country"></field>
+                            <field name="gender"></field>
+                            <field name="day_of_birth"></field>
+                        </group>
+                        <group>
+                            <field name="position"></field>
+                            <field name="height"></field>
+                            <field name="weight"></field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <record id = "player_action" model="ir.actions.act_window">
+        <field name="name">player</field>
+        <field name="res_model">player</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id = "player_menu_root" name = "Player" groups = "base.group_user"/>
+    <menuitem id = "player_menu" name="Player" parent = "player_menu_root" action = "player_action" groups="base.group_user"/>
+</odoo>
