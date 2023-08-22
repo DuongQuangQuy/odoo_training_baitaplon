@@ -5,7 +5,7 @@
     'author': "Enmasys",
     'category': 'Category',
     'description': """
-    Description text
+    Description text,
     """,
     # data files always loaded at installation
     'data': [

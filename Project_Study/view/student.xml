@@ -40,11 +40,11 @@
                     </div>
                     <group>
                         <group>
-                            <field name="description"></field>
+                            <field name="description"> </field>
                         </group>
                         <group>
-                            <field name="dateline"></field>
-                            <field name="student_id"></field>
+                            <field name="dateline"> </field>
+                            <field name="student_id"> </field>
                         </group>
                     </group>
                 </sheet>
