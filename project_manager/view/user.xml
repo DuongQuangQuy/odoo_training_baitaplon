@@ -4,11 +4,12 @@
         <field name="model">user</field>
         <field name="arch" type = "xml">
                 <tree string = "user">
+                    <field name="customer"/>
                     <field name ="name" />
                     <field name="description"/>
                     <field name="dateline" />
                     <field name="product_ids" />
-                    <field name="product_id"/>
+<!--                    <field name="product_id"/>-->
                 </tree>
         </field>
     </record>
@@ -27,11 +28,16 @@
                     <group>
                         <group>
                             <field name="description"></field>
+                            <field name="assignee"/>
+                            <field name="assignee_to" widget = "many2many_tags"/>
+                            <field name="assign_update" attrs="{'invisible':[('assignee_to', '=', True)]}" />
                         </group>
                         <group>
+                            <field name="customer"></field>
                             <field name="dateline"></field>
+<!--                            <field name="assign_update"></field>-->
                             <field name="product_ids"></field>
-                            <field name="product_id"></field>
+<!--                            <field name="product_id"></field>-->
                         </group>
                     </group>
                 </sheet>
@@ -48,6 +54,6 @@
         <field name="res_model">user</field>
         <field name="view_mode">tree,form</field>
     </record>
-        <menuitem id = "user_menu_root" name = "user" groups = "base.group_user"/>
-        <menuitem id = "user_menu" name="user" parent = "user_menu_root" action = "user_action" groups="base.group_user"/>
+        <menuitem id = "user_menu_root" name = "User" groups = "base.group_user"/>
+        <menuitem id = "user_menu" name="User" parent = "user_menu_root" action = "user_action" groups="base.group_user"/>
 </odoo>

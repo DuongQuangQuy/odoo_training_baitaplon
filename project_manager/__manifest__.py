@@ -11,6 +11,7 @@
     'data': [
         'security/ir.model.access.csv',
         'view/user.xml',
+        'view/inherit.xml',
         'view/product_study.xml',
     ],
     # data files containing optionally loaded demonstration data
