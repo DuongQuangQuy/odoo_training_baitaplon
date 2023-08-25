@@ -1,0 +1,64 @@
+<odoo>
+    <record id = "study_tree" model = "ir.ui.view">
+        <field name ="name">project.study.tree</field>
+        <field name="model">project.study</field>
+        <field name="arch" type = "xml">
+                <tree string = "Study">
+                    <field name="study_name"/>
+                    <field name="assign_to"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="deadline"/>
+                </tree>
+        </field>
+    </record>
+    <record id="study_form" model="ir.ui.view">
+        <field name = "name">project.study.form</field>
+        <field name="model">project.study</field>
+        <field name="arch" type="xml">
+            <form string = "Study">
+                <header>
+                    <button name = "action_to_do" type="object" string="To Do" states = "done" class="oe_highlight"/>
+                    <button name = "action_in_progress" type="object" string="In Progress" states = "to do" class="oe_highlight"/>
+                    <button name = "action_review" type="object" string="Review" states = "in progress" class="oe_highlight"/>
+                    <button name = "action_done" type="object" string="Done" states = "review" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" status_visible = "to do,in progress,review,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="study_name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="assign_to" widget="many2many_tags"/>
+                            <field name="deadline"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget = "mail_followers"/>
+                    <field name="activity_ids" widget = "mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id = "study_action" model="ir.actions.act_window">
+        <field name="name">Study</field>
+        <field name="res_model">project.study</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_content_smiling_face">
+                Create First Study!
+            </p>
+        </field>
+    </record>
+        <menuitem id = "project_root" name = "Project Study" sequence = "0"/>
+        <menuitem id = "project_study" name="Study" parent = "project_root" action="study_action" sequence = "0"/>
+</odoo>

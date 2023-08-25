@@ -1,18 +1,17 @@
 {
-    'name': "Project_study",
+    'name': "Enmasys Project Study",
     'version': '14.0.1',
-    'depends': ['base','mail','sale'],
+    'depends': ['base','mail','sale',],
     'author': "Enmasys",
     'category': 'Category',
     'description': """
-    Description text,
+    Description text
     """,
     # data files always loaded at installation
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
-        'data/sequence.xml',
-        'view/Student.xml',
-        'view/classroom.xml',
+        'view/study.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
