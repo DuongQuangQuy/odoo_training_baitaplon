@@ -6,11 +6,12 @@ class ProjectStudy(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Study'
 
-    study_name = fields.Char(string='Name', tracking=True)
-    start_date = fields.Date(string='Start Date', tracking=True)
-    end_date = fields.Date(string='End Date', tracking=True )
-    deadline = fields.Datetime(string='Deadline', tracking=True)
+    study_name = fields.Char(string='Name', tracking=True, required=True)
+    start_date = fields.Date(string='Start Date', tracking=True, required=True)
+    end_date = fields.Date(string='End Date', tracking=True, required=True )
+    deadline = fields.Datetime(string='Deadline', tracking=True, required=True)
     assign_to = fields.Many2many(comodel_name = 'res.partner',string = 'Assigned to')
+    customer = fields.Many2one(comodel_name = 'res.partner', string='Customer')
     state = fields.Selection(selection=[
         ('to do', 'To Do'),
         ('in progress', 'In Progress'),
